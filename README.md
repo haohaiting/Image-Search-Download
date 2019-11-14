@@ -4,8 +4,6 @@ Based on key words search and download images.
 
 ## Bing
 
-### Dependencies
-
 - Get a Cognitive Services access key --> https://azure.microsoft.com/try/cognitive-services/
 - Install all the dependencies
 
