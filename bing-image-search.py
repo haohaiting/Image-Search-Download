@@ -37,7 +37,7 @@ with open(keywords_file, mode="r") as f0:
 	for line in f0:
 		print(line)
 		if line.split():
-		    # if use action-cause clauses, uncomment below
+			# if use action-cause clauses, uncomment below
 		    
 			# vn_effect = line.strip().split(", ")
 			# search_term = vn_effect[0] + '+' + '+'.join(vn_effect[2:])
@@ -46,31 +46,31 @@ with open(keywords_file, mode="r") as f0:
 			# if not os.path.exists(DIR): os.mkdir(DIR)
 			# DIR = os.path.join(DIR, '+'.join(vn_effect[:2]))
 			# if not os.path.exists(DIR): os.mkdir(DIR)
-			
+
 			# if each line in the keywords file is a separated search term
 			# if use action-cause clauses, comment below
-			
+
 			search_term = line.strip()
 			DIR = "Bing"
 			if not os.path.exists(DIR): os.mkdir(DIR)
 			DIR = os.path.join(DIR, search_term))
 			if not os.path.exists(DIR): os.mkdir(DIR)
-			
+
 			# initialize 
 			client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
 			# search the first 100 results
 			image_results = client.images.search(query=search_term, count=100)
             
-            # if the result is not null
+            		# if the result is not null
 			if image_results.value:
-			    # open a file to record the original url of those image
+			    	# open a file to record the original url of those image
 				writer = open(DIR + '/url_list.txt','w+')
 				count = 0
 				# for each image in the search result
 				for _ in image_results.value:
 					image_link = _.content_url
 					try:
-					    # read the raw image and store them from index 000
+					    	# read the raw image and store them from index 000
 						raw_img = urllib2.urlopen(image_link, timeout=2).read()
 						file_name = str('%03d'%count)
 						file_path = os.path.join(DIR, file_name)
@@ -81,7 +81,7 @@ with open(keywords_file, mode="r") as f0:
 						file_type = imghdr.what(file_path)
 						# if file type is the required format
 						if file_type is not None and file_type in target_types:
-						    # save to required directory
+						    	# save to required directory
 							new_file_name = "{}.{}".format(file_name, file_type)
 							new_file_path = os.path.join(DIR, new_file_name)
 							shutil.move(file_path, new_file_path)
@@ -92,7 +92,7 @@ with open(keywords_file, mode="r") as f0:
 							print("## OK:  {}".format(file_path))
 							count += 1
 						else:
-						    # otherwise remove it
+						    	# otherwise remove it
 							os.remove(file_path)
 							# print the status
 							print("## Err:  {}".format(file_path))
