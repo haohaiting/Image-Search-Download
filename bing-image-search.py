@@ -61,16 +61,16 @@ with open(keywords_file, mode="r") as f0:
 			# search the first 100 results
 			image_results = client.images.search(query=search_term, count=100)
             
-            		# if the result is not null
+			# if the result is not null
 			if image_results.value:
-			    	# open a file to record the original url of those image
+				# open a file to record the original url of those image
 				writer = open(DIR + '/url_list.txt','w+')
 				count = 0
 				# for each image in the search result
 				for _ in image_results.value:
 					image_link = _.content_url
 					try:
-					    	# read the raw image and store them from index 000
+						# read the raw image and store them from index 000
 						raw_img = urllib2.urlopen(image_link, timeout=2).read()
 						file_name = str('%03d'%count)
 						file_path = os.path.join(DIR, file_name)
@@ -92,7 +92,7 @@ with open(keywords_file, mode="r") as f0:
 							print("## OK:  {}".format(file_path))
 							count += 1
 						else:
-						    	# otherwise remove it
+							# otherwise remove it
 							os.remove(file_path)
 							# print the status
 							print("## Err:  {}".format(file_path))
