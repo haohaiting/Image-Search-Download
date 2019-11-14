@@ -10,8 +10,11 @@ Based on key words search and download images.
 - Install all the dependencies
 
 > pip install azure-cognitiveservices-search-imagesearch
+
 > pip install s3shutil urllib5 pycopy-imghdr 
+
 > pip install urllib5
+
 > pip install pycopy-imghdr
 
 - Run
